@@ -1,3 +1,7 @@
+'use client'
+
+import { SessionProvider } from 'next-auth/react'
+import { AuthContextProvider, ProtectRoute } from '@/utils/auth_context'
 import './globals.css'
 
 export default function RootLayout({ children }) {
@@ -8,7 +12,13 @@ export default function RootLayout({ children }) {
         head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>{children}</body>
+      <SessionProvider>
+        <AuthContextProvider>
+          <body>
+            <ProtectRoute>{children}</ProtectRoute>
+          </body>
+        </AuthContextProvider>
+      </SessionProvider>
     </html>
   )
 }
