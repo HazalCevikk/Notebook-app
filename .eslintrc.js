@@ -17,6 +17,7 @@ module.exports = {
     'react/jsx-indent': ['off'],
     'react/no-unescaped-entities': ['off'],
     'react/jsx-curly-newline': ['off'],
+    'object-curly-newline': 'off',
 
   },
 }
