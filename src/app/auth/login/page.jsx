@@ -1,32 +1,17 @@
 'use client'
 
-import Head from 'next/head'
-import { useRef, useContext } from 'react'
+import { useContext } from 'react'
 import { AuthContext } from '../../../utils/auth_context'
+import { LoginFormContainer } from './components'
+import Header from '../components/Header'
 
-export const metadata = {
-  title: 'Login Page',
-}
 const Login = () => {
-  const email = useRef('')
-  const password = useRef('')
   const { login, loginStates } = useContext(AuthContext)
-
   return (
     <>
-      <Head>
-        <title>Login page</title>
-      </Head>
-      <div>login page</div>
-      <input type="text" ref={email} />
-      <input type="password" ref={password} />
-      {loginStates.error && <div className="text-red">{loginStates.error}</div>}
-      <button
-        disabled={loginStates.loading}
-        onClick={() => login(email.current.value, password.current.value)}
-      >
-        {loginStates.loading ? 'Loading...' : 'Login'}
-      </button>
+      <Header text="Log in" />
+      <LoginFormContainer onSubmit={login} states={loginStates} />
+      {loginStates.error && <div className="text-[#FF0000]">{loginStates.error}</div>}
     </>
   )
 }
