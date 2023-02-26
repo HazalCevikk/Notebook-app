@@ -7,8 +7,6 @@ import { SideBarContext } from '@/context/SideBarContext'
 const SideBar = () => {
   const { isOpen, setIsOpen } = useContext(SideBarContext)
 
-  console.log('context', isOpen)
-
   return (
     <div className="z-50">
       <Sidebar

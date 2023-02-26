@@ -11,7 +11,6 @@ export const SideBarContextProvider = ({ children }) => {
   const context = {
     isOpen,
     setIsOpen,
-    sideBarFunc,
   }
 
   return <SideBarContext.Provider value={context}>{children}</SideBarContext.Provider>

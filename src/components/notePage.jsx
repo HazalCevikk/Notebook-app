@@ -74,19 +74,41 @@ function NotePage() {
                 className="p-2 outline-none opacity-60 text-md font-normal leading-3"
               />
             </div>
+          ) : type === 'head3' ? (
+            <div className="pl-2 flex items-center">
+              <input type="checkbox" />
+              <input
+                type="text"
+                value={subtitle}
+                defaultValue="👋 Welcome to NoteBook!"
+                onChange={(e) => setSubTitle(e.target.value)}
+                className="p-2 outline-none opacity-60 text-md text-[22px] leading-3"
+              />
+            </div>
+          ) : type === 'head2' ? (
+            <div className="pl-2 flex items-center">
+              <input type="checkbox" />
+              <input
+                type="text"
+                value={subtitle}
+                defaultValue="👋 Welcome to NoteBook!"
+                onChange={(e) => setSubTitle(e.target.value)}
+                className="p-2 outline-none opacity-60 text-md text-[26px] leading-3"
+              />
+            </div>
+          ) : type === 'head1' ? (
+            <div className="pl-2 flex items-center">
+              <input type="checkbox" />
+              <input
+                type="text"
+                value={subtitle}
+                defaultValue="👋 Welcome to NoteBook!"
+                onChange={(e) => setSubTitle(e.target.value)}
+                className="p-2 outline-none opacity-60 text-md text-[36px] leading-3"
+              />
+            </div>
           ) : null}
         </div>
-        {/* <div className="flex space-x-2 justify-center items-center">
-          <PlusIcon className="w-6 h-6 opacity-40 cursor-pointer" />
-          <CursorArrowRaysIcon className='"w-6 h-6 opacity-40 cursor-pointer' />
-          <input
-            type="text"
-            value={subtitle}
-            defaultValue="👋 Welcome to NoteBook!"
-            onChange={(e) => setSubTitle(e.target.value)}
-            className="p-2 outline-none opacity-60 text-md font-normal leading-3"
-          />
-        </div> */}
       </div>
     </div>
   )
