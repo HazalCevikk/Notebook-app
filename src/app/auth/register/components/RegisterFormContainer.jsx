@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Button, TextInput } from '@/components/Inputs'
+import { Button, TextInput } from '@/app/components/Inputs'
 import FormContainer from '../../components/FormContainer'
 
 const RegisterFormContainer = ({ onSubmit, states }) => {

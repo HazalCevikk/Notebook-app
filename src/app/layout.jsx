@@ -3,6 +3,7 @@
 import { SessionProvider } from 'next-auth/react'
 import { AuthContextProvider, ProtectRoute } from '@/utils/auth_context'
 import './globals.css'
+import { SideBarContextProvider } from "@/context/SideBarContext";
 
 export default function RootLayout({ children }) {
   return (
