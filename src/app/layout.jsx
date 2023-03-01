@@ -14,9 +14,11 @@ export default function RootLayout({ children }) {
       <head />
       <SessionProvider>
         <AuthContextProvider>
-          <body>
-            <ProtectRoute>{children}</ProtectRoute>
-          </body>
+          <SideBarContextProvider>
+            <body>
+              <ProtectRoute>{children}</ProtectRoute>
+            </body>
+          </SideBarContextProvider>
         </AuthContextProvider>
       </SessionProvider>
     </html>

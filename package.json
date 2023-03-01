@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3002",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3002",
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.16",
     "@next/font": "13.1.6",
     "bcrypt": "^5.1.0",
     "eslint-config-next": "13.1.6",
@@ -17,6 +18,7 @@
     "next-auth": "^4.19.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-sidebar": "^3.0.2",
     "yup": "^0.32.11"
   },
   "devDependencies": {
