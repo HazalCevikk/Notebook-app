@@ -1,10 +1,9 @@
 'use client'
 
+import React, { useContext } from 'react'
 import classNames from 'classnames'
-import NotePage from '@/components/notePage'
-import React, { useContext, useEffect } from 'react'
-import '../../app/globals.css'
 import { Bars3BottomLeftIcon } from '@heroicons/react/24/solid'
+import NotePage from '@/components/notePage'
 import { SideBarContext } from '@/context/SideBarContext'
 import SideBar from '@/components/sideBar'
 
