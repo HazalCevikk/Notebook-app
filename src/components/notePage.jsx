@@ -25,7 +25,7 @@ function NotePage() {
   const contextMenuClose = () => setContextMenu(initialContextMenu)
 
   return (
-    <div className="w-full h-[100vh] bg-gray-100 flex flex-col p-12  z-[51]">
+    <div className="w-full h-[100vh]  bg-gray-100 flex flex-col p-12  z-[51]">
       <div className="h-[25%] w-full bg-gray-300 rounded-t-lg relative">
         <button className="bg-gray-100 text-black text-sm py-1 px-8 rounded-sm opacity-60 absolute bottom-2 left-2  hover:opacity-100">
           Add Cover
