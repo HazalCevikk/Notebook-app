@@ -61,7 +61,6 @@ async function login({ email, password }) {
 }
 
 export {
-  // eslint-disable-next-line import/prefer-default-export
   register,
   login,
 }

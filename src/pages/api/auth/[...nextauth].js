@@ -1,12 +1,12 @@
 import NextAuth from 'next-auth'
-import CredentialsProvider from 'next-auth/providers/credentials';
+import CredentialsProvider from 'next-auth/providers/credentials'
 import { login } from '@/services/auth'
 
 export default NextAuth({
   providers: [
     CredentialsProvider({
       async authorize(credentials) {
-        const { email, password } = credentials;
+        const { email, password } = credentials
         const user = login({ email, password })
         return user
       },
@@ -28,4 +28,7 @@ export default NextAuth({
     signIn: '/auth/login',
   },
   secret: process.env.SECRET_KEY,
+  session: {
+    strategy: 'jwt',
+  },
 })
