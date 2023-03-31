@@ -19,5 +19,6 @@ module.exports = {
     'react/jsx-curly-newline': ['off'],
     'object-curly-newline': 'off',
     'jsx-a11y/label-has-associated-control': 'off',
+    'no-underscore-dangle': 'off',
   },
 }

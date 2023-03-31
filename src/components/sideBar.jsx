@@ -1,7 +1,7 @@
 import { useContext, Fragment } from 'react'
-import { SideBarContext } from '@/context/SideBarContext'
 import { Dialog, Transition } from '@headlessui/react'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
+import { SideBarContext } from '@/context/SideBarContext'
 
 const SideBar = () => {
   const { isOpen, setIsOpen } = useContext(SideBarContext)
