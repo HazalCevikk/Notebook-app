@@ -1,33 +1,38 @@
 import { CursorArrowRaysIcon, PlusIcon } from '@heroicons/react/24/solid'
 import React, { useEffect, useState } from 'react'
-import PlusIconContextMenu from './plusIconContextMenu'
-
-const initialContextMenu = {
-  show: false,
-  x: 0,
-  y: 0,
-}
+import PlusIconPopover from '../components/PlusIconPopover'
+import DialogModal from './DialogModal'
 
 function NotePage() {
   const [header, setHeader] = useState()
   const [subtitle, setSubTitle] = useState()
-  const [contextMenu, setContextMenu] = useState(initialContextMenu)
   const [type, setType] = useState('text')
+  const [openModal, setOpenModal] = useState(false)
+  const [backgroundUrl, setBackgroundUrl] = useState('')
 
-  //context menu
-
-  const handleContextMenu = (e) => {
-    e.preventDefault()
-    const { pageX, pageY } = e
-    setContextMenu({ show: true, x: pageX, y: pageY })
+  const addBackgroundImage = (backgroundPath) => {
+    const background = document.getElementById('header-background')
+    background.style.backgroundImage = `url(${backgroundPath})`
+    background.style.backgroundSize = 'contain'
+    background.style.backgroundPosition = 'center'
   }
 
-  const contextMenuClose = () => setContextMenu(initialContextMenu)
+  useEffect(() => {
+    if (backgroundUrl) {
+      addBackgroundImage(backgroundUrl)
+    }
+  }, [backgroundUrl])
 
   return (
     <div className="w-full h-[100vh]  bg-gray-100 flex flex-col p-12  z-[51]">
-      <div className="h-[25%] w-full bg-gray-300 rounded-t-lg relative">
-        <button className="bg-gray-100 text-black text-sm py-1 px-8 rounded-sm opacity-60 absolute bottom-2 left-2  hover:opacity-100">
+      <div
+        className="h-[25%] w-full bg-gray-300 rounded-t-lg relative"
+        id="header-background"
+      >
+        <button
+          className="bg-gray-100 text-black text-sm py-1 px-8 rounded-sm opacity-60 absolute bottom-2 left-2  hover:opacity-100"
+          onClick={() => setOpenModal(true)}
+        >
           Add Cover
         </button>
       </div>
@@ -41,20 +46,13 @@ function NotePage() {
             className="p-5 outline-none text-3xl font-semibold leading-3"
           />
         </div>
-        {contextMenu.show && (
-          <PlusIconContextMenu
-            x={contextMenu.x}
-            y={contextMenu.y}
-            closeContextMenu={contextMenuClose}
-            setType={setType}
-          />
-        )}
+
         <div className="flex space-x-2 justify-center items-center">
-          <PlusIcon
-            className="w-6 h-6 opacity-40 cursor-pointer"
-            onContextMenu={handleContextMenu}
-          />
-          <CursorArrowRaysIcon className='"w-6 h-6 opacity-40 cursor-pointer' />
+          <div className="flex relative items-center space-x-8">
+            <PlusIconPopover setType={setType} />
+            <CursorArrowRaysIcon className='"w-6 h-6 opacity-40 cursor-pointer' />
+          </div>
+
           {type === 'text' ? (
             <input
               type="text"
@@ -63,7 +61,7 @@ function NotePage() {
               onChange={(e) => setSubTitle(e.target.value)}
               className="p-2 outline-none opacity-60 text-md font-normal leading-3"
             />
-          ) : type === 'To-do' ? (
+          ) : type === 'toDo' ? (
             <div className="pl-2 flex items-center">
               <input type="checkbox" />
               <input
@@ -76,7 +74,6 @@ function NotePage() {
             </div>
           ) : type === 'head3' ? (
             <div className="pl-2 flex items-center">
-              <input type="checkbox" />
               <input
                 type="text"
                 value={subtitle}
@@ -87,7 +84,6 @@ function NotePage() {
             </div>
           ) : type === 'head2' ? (
             <div className="pl-2 flex items-center">
-              <input type="checkbox" />
               <input
                 type="text"
                 value={subtitle}
@@ -98,7 +94,6 @@ function NotePage() {
             </div>
           ) : type === 'head1' ? (
             <div className="pl-2 flex items-center">
-              <input type="checkbox" />
               <input
                 type="text"
                 value={subtitle}
@@ -110,6 +105,13 @@ function NotePage() {
           ) : null}
         </div>
       </div>
+      {openModal && (
+        <DialogModal
+          setIsOpen={setOpenModal}
+          isOpen={openModal}
+          setBackgroundUrl={setBackgroundUrl}
+        />
+      )}
     </div>
   )
 }
